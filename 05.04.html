@@ -1,0 +1,185 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Forms</title>
+  
+</head>
+<body>
+  <form id="form">
+	<label for="uname">name:</label><br>
+    <input type="text" id="uname" name="uname" data-parsley-required="true" minlength="4" maxlength="20" pattern="^((?!((^|, )(admin|user|test))+$).)*$"><br>
+    <label for="email">Enter your email:</label>
+    <input type="email" id="email" name="email" required="true" data-parsley-type="email">
+	<label for="pwd">Password:</label><br>
+	<input type="password" id="pwd" name="pwd" required="true" minlength="6" maxlength="30">
+	<label for="pwd">Repeat Password:</label><br>
+	<input type="password" id="pwd_r" name="pwd_r" data-parsley-repeated="true" data-parsley-equalto="#pwd">
+	<input type="submit" value="Submit">
+
+
+  </form>
+  
+<script src="jquery.min.js"></script>
+<script src="parsley.min.js"></script>
+
+<script>
+  $('#form').parsley();
+  var uname = $('#uname').parsley();
+	console.log(uname.isValid());
+  var email = $('#email').parsley();
+	console.log(email.isValid());
+  var pwd = $('#pwd').parsley();
+	console.log(pwd.isValid());
+  var pwd_r = $('#pwd_r').parsley();
+	console.log(pwd_r.isValid());
+	
+	
+$(document).ready(function() {
+    $('#pwd').on('input', function() {
+        var password = $(this).val();
+        var strength = 0;
+  
+        // Only one case or only digits
+        if (((password.match(/[a-z]/) ^ password.match(/[A-Z]/))^password.match(/\d/))&&(!password.match(/[^a-zA-Z\d]/))) {
+            strength = 1;
+        } 
+		
+		if (((password.match(/[a-z]/) ^ password.match(/[A-Z]/))&&password.match(/\d/))) {
+            strength = 2;
+        } 
+  
+        if (((password.match(/[a-z]/) && password.match(/[A-Z]/))&&password.match(/\d/))) {
+            strength = 3;
+        } 
+  
+        if (((password.match(/[a-z]/) && password.match(/[A-Z]/))&&password.match(/\d/))&&(password.match(/[^a-zA-Z\d]/))) {
+            strength = 4;
+        } 
+		console.log(strength)
+  
+        // Update the text and color based on the password strength
+        var passwordStrengthElement = $('#password-strength');
+        if (strength < 2) {
+            passwordStrengthElement.text("Very easy");
+            passwordStrengthElement.css('color', 'red');
+        } else if (strength === 2) {
+            passwordStrengthElement.text("Easy");
+            passwordStrengthElement.css('color', 'orange');
+        } else if (strength === 3) {
+            passwordStrengthElement.text("Normal");
+            passwordStrengthElement.css('color', 'black');
+        } else {
+            passwordStrengthElement.text("Hard");
+            passwordStrengthElement.css('color', 'green');
+        }
+    });
+});
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
